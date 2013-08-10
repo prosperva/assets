@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <setParameter name="IIS Web Application Name" value="Default Web Site/SAAssetManagement_deploy" />
+  <setParameter name="AssetContext-Web.config Connection String" value="Server=edm-goa-sqlc-ub\edmgoasqlcub,1179;Database=SACIO_ITAssets;User Id=SACIO_ITAssets_admin;Password=H4%go22z;" />
+</parameters>

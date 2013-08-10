@@ -1,0 +1,42 @@
+﻿@model SAAssetManagement.Models.AssetType
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Asset Type</legend>
+
+        @Html.HiddenFor(model => model.AssetTypeID)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AssetTypeName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.AssetTypeName)
+            @Html.ValidationMessageFor(model => model.AssetTypeName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.WarantyTerm)
+            @Html.ValidationMessageFor(model => model.WarantyTerm)
+        </div>
+        <input type="hidden" value="@Model.CreatedOn" />
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,36 @@
+﻿@model SAAssetManagement.Models.AssetType
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>AssetType</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.AssetTypeName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AssetTypeName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CreatedOn)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CreatedOn)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.LastUpdatedOn)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LastUpdatedOn)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.AssetTypeID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

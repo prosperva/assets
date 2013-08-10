@@ -1,0 +1,83 @@
+﻿@model SAAssetManagement.Models.Software
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Software</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PONumber)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PONumber)
+            @Html.ValidationMessageFor(model => model.PONumber)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.softwareName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.softwareName)
+            @Html.ValidationMessageFor(model => model.softwareName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.InstallNumber)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.InstallNumber)
+            @Html.ValidationMessageFor(model => model.InstallNumber)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.LicenceNumber)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.LicenceNumber)
+            @Html.ValidationMessageFor(model => model.LicenceNumber)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NumberOfLicenses)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NumberOfLicenses)
+            @Html.ValidationMessageFor(model => model.NumberOfLicenses)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Assisted)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Assisted)
+            @Html.ValidationMessageFor(model => model.Assisted)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SerialNumber)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SerialNumber)
+            @Html.ValidationMessageFor(model => model.SerialNumber)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

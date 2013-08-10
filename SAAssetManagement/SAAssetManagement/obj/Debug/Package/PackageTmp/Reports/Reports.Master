@@ -1,0 +1,152 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Reports.master.cs" Inherits="SAAssetManagement.Reports.Reports" %>
+<%@ Register assembly="Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" namespace="Microsoft.Reporting.WebForms" tagprefix="rsweb" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+   <meta charset="utf-8">
+    <title><asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+    </asp:ContentPlaceHolder> - Asset Management System</title>
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Le styles -->
+    <link href="~/Content/assets/css/bootstrap.css" rel="stylesheet">
+    <style>
+      body { padding-top: 60px; /* 60px to make the container go all the way
+      to the bottom of the topbar */ }
+    </style>
+    <link href="~/Content/assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js">
+      </script>
+    <![endif]-->
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="~/Content/assets/ico/favicon.ico">
+   
+    <link rel="stylesheet" type="text/css" href="/Content/jquery-ui-1.7.2.custom.css" />
+    <link rel="stylesheet" type="text/css" href="/Content/demo_table_jui.css" />
+    <style>
+        th{text-align:left;}
+        table.table thead .sorting,
+        table.table thead .sorting_asc,
+        table.table thead .sorting_desc,
+        table.table thead .sorting_asc_disabled,
+        table.table thead .sorting_desc_disabled {
+            cursor: pointer;
+            *cursor: hand;
+        }
+        table.table thead .sorting { background: url('images/sort_both.png') no-repeat center right; }
+        table.table thead .sorting_asc { background: url('images/sort_asc.png') no-repeat center right; }
+        table.table thead .sorting_desc { background: url('images/sort_desc.png') no-repeat center right; }
+ 
+        table.table thead .sorting_asc_disabled { background: url('images/sort_asc_disabled.png') no-repeat center right; }
+        table.table thead .sorting_desc_disabled { background: url('images/sort_desc_disabled.png') no-repeat center right; }
+    </style>
+</head>
+<body>
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">
+            Service Alberta Asset Management System
+          </a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administation Tables <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li class=""> <a href="../asset">Assets</a></li>
+                        <li class=""> <a href="../assettype">Asset Status Types</a></li>
+                        <li class=""> <a href="../assettype">Asset Types</a></li>
+                        <li class=""> <a href="../branch">Branches</a></li>
+                        <li class=""> <a href="../building">Buildings</a></li>
+                        <li class=""> <a href="../division">Divisions</a></li>
+                        <li class=""> <a href="../employee">Employees</a></li>
+                        <li class=""> <a href="../osssystem">Operating Systems</a></li>
+                        <li class=""> <a href="../software">Software</a></li>
+                        <li class=""> <a href="../workstationtype">Workstation Types</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reports <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li class="">
+                            <a href="AssetsByDivisionByType.aspx">Assets by Division and by Type</a>
+                        </li>
+                        <li class="">
+                            <a href="AssetsByDivisionByEmployee.aspx">Assets by Employee</a>
+                        </li>
+                        <li class="">
+                            <a href="GetSoftwareAssets.aspx">Get Software Assets</a>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">About</a></li>
+
+                <% if (Request.IsAuthenticated)
+                   { %>
+
+                   <li><a href="#">Manage</a></li>
+                   <li><a href="#">Log out</a></li>
+
+                <%}
+                   else
+                   {%>
+
+
+                   <li><a href="#">Log in</a></li>
+
+
+                <%} %>
+
+                <%--@if (Request.IsAuthenticated) {
+                  <text>
+                    <li>@Html.ActionLink(User.Identity.Name, "Manage", "Account", routeValues: null, htmlAttributes: new {title = "Manage" })</li>
+                    <li>
+                      @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" })) {
+                            @Html.AntiForgeryToken()
+                            <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+                      }
+                    </li>
+                  </text>
+                } 
+                else {
+                    @*<li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>*@
+                    <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+                }--%>
+
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder3" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>       
+        <div>
+            &copy; <%Response.Write(DateTime.Now.Year.ToString()); %> - Service Alberta Asset Management System
+        </div>
+    </div>
+
+    <script type="text/javascript" src="/Scripts/jquery-latest.min.js"></script>
+    <script type="text/javascript" src="/Scripts/jquery.dataTables.nightly.js"></script>
+    <script type="text/javascript" src="/Scripts/jquery-ui-1.10.1.custom.min.js"></script>
+    <script type="text/javascript" src="/Content/assets/js/bootstrap.js"></script>
+</body>
+</html>

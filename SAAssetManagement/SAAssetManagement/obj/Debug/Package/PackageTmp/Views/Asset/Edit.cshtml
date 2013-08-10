@@ -1,0 +1,633 @@
+﻿@model SAAssetManagement.Models.Asset
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<div class="row">
+    <div class="span8">
+        <h2>Editing @Model.AssetTag</h2>
+    </div>
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+
+        @Html.HiddenFor(model => model.AssetID)
+
+        <div class="tabbable">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#tab1" data-toggle="tab">Ownership Information</a></li>
+                <li><a href="#tab2" data-toggle="tab">Location Information</a></li>
+                <li><a href="#tab3" data-toggle="tab">Procurement Information</a></li>
+                <li><a href="#tab4" data-toggle="tab">Warranty Information</a></li>
+                 @if (@Model.AssetTypeID == 1)
+                 {
+                        <li><a href="#tab5" data-toggle="tab">Software Information</a></li>
+                 }
+                <li><a href="#tab6" data-toggle="tab">History Information</a></li>
+                <li><a href="#tab7" data-toggle="tab">Other Information</a></li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active" id="tab1">
+                <div class="editor-label">
+            @Html.LabelFor(model => model.DivisionID)
+        </div>
+
+        <div class="editor-field">
+            <select id="divisionid" name="divisionid"></select>
+            @Html.ValidationMessageFor(model => model.DivisionID)
+        </div>
+      
+        <div class="editor-label">
+            @Html.LabelFor(model => model.BranchID)
+        </div>
+        <div class="editor-field">
+            <select id="branchid" name="branchid"></select>
+            @Html.ValidationMessageFor(model => model.BranchID)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EmployeeID, "Employee")
+        </div>
+        <div class="editor-field">
+            @*@Html.DropDownList("EmployeeID", null, new { @class = "chzn-select" })*@
+            @Html.DropDownList("EmployeeID", String.Empty)
+            @Html.ValidationMessageFor(model => model.EmployeeID)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AssetTypeID, "Asset Type")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("AssetTypeID", String.Empty)
+            @Html.ValidationMessageFor(model => model.AssetTypeID)
+        </div>
+        <div id="dynamicForm">
+            @*@if (Model.AssetTypeID == 1) { 
+                Html.RenderPartial("workstation");
+            }*@
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AssetTag)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.AssetTag)
+            @Html.ValidationMessageFor(model => model.AssetTag)
+        </div>
+        </div>
+        
+        <div class="tab-pane" id="tab2">
+        <div class="editor-label">
+            @Html.LabelFor(model => model.BuildingID, "Building")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("BuildingID", String.Empty)
+            @Html.ValidationMessageFor(model => model.BuildingID)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Floor)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Floor)
+            @Html.ValidationMessageFor(model => model.Floor)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Address)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Address)
+            @Html.ValidationMessageFor(model => model.Address)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.City)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.City)
+            @Html.ValidationMessageFor(model => model.City)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ComputerLocation)
+        </div>
+        <div class="editor-field">
+            @Html.TextAreaFor(model => model.ComputerLocation, new { @cols = "50", @rows = "5" })
+            @Html.ValidationMessageFor(model => model.ComputerLocation)
+        </div>
+
+       </div>
+       
+       <div class="tab-pane" id="tab3">
+           <div class="editor-label">
+                @Html.LabelFor(model => model.PONumber)
+           </div>
+           <div class="editor-field">
+                @Html.EditorFor(model => model.PONumber)
+                @Html.ValidationMessageFor(model => model.PONumber)
+           </div>
+       </div>
+                <div class="tab-pane" id="tab4">
+                <div class="editor-label">
+            @Html.LabelFor(model => model.ReceivedDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ReceivedDate)
+            @Html.ValidationMessageFor(model => model.ReceivedDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DeployedDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DeployedDate)
+            @Html.ValidationMessageFor(model => model.DeployedDate)
+        </div>
+
+        @*        <div class="editor-label">
+                    @Html.LabelFor(model => model.StartWarrantyDate)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.StartWarrantyDate)
+                    @Html.ValidationMessageFor(model => model.StartWarrantyDate)
+                </div>
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.EndWarrantyDate)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.EndWarrantyDate)
+                    @Html.ValidationMessageFor(model => model.EndWarrantyDate)
+                </div>
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.WarrantyTerm)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.WarrantyTerm)
+                    @Html.ValidationMessageFor(model => model.WarrantyTerm)
+                </div>*@
+        </div>
+                
+        @if (@Model.AssetTypeID == 1)
+        {
+                <div class="tab-pane" id="tab5">
+                    @*<h5>Software Installed on this workstation:</h5>
+                    <hr />
+
+                    <div class="editor-field">
+                        <div id="results"></div>
+                    </div>
+                    <br />
+
+                    <div class="editor-label">
+                        <label>Enter a name of a software:</label> <input type="text" name="sports" id="sports" />
+                    </div>*@
+
+                   <div id="elem">
+                    <!-- If there are software installed, then show them -->
+                    <div class="row-fluid no-space">
+                        <div class="span3">Software Name</div>
+                        <div class="span3">Install Type</div>
+                        <div class="span3">PO Number</div>
+                        <div class="span3">License Key</div>
+                        <div class="span3"></div>
+                    </div>
+
+                    @*@foreach (var item in @Model.SoftwarePerAssets)
+                    {
+                        <div class="fields">
+                            <input type="hidden" name="assetSoftware.Index" value="@item.ID" />
+                            <div class="row-fluid">
+                                <div class="span3">
+                                    <select name="assetSoftware[@item.ID].softName" class="load"></select>
+                                </div>
+                                <div class="span3">
+                                    <select name="assetSoftware[@item.ID].installType" class="installType">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                                </div>
+                                <div class="span3">
+                                    <input type="text" name="assetSoftware[@item.ID].serial" value="@item.SerialKey" />
+                                </div>
+                                <div class="span3">
+                                    <a class="remove" href="#">Remove Software</a>
+                                </div>
+                            </div>
+                        </div>
+                    }*@
+
+
+                    <div id="assetSofwares"></div>
+
+                </div>
+                <a href="#" id="addElem">Add Software</a>
+
+                </div>
+        }
+
+        <div class="tab-pane" id="tab6">
+            <div class="editor-label">
+                @Html.LabelFor(model => model.CreatedOn)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.CreatedOn)
+                @Html.ValidationMessageFor(model => model.CreatedOn)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.LastUpdatedOn)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.LastUpdatedOn)
+                @Html.ValidationMessageFor(model => model.LastUpdatedOn)
+            </div>
+        </div>
+
+        <div class="tab-pane" id="tab7">
+            <div class="editor-label">
+                @Html.LabelFor(model => model.SerialNumber)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.SerialNumber)
+                @Html.ValidationMessageFor(model => model.SerialNumber)
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.PartNumber)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.PartNumber)
+                @Html.ValidationMessageFor(model => model.PartNumber)
+            </div>
+            @*<div class="editor-label">
+                @Html.LabelFor(model => model.Description)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Description)
+                @Html.ValidationMessageFor(model => model.Description)
+            </div>*@
+            <div class="editor-label">
+                @Html.LabelFor(model => model.MakeModel)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.MakeModel)
+                @Html.ValidationMessageFor(model => model.MakeModel)
+            </div>
+            @*<div class="editor-label">
+                @Html.LabelFor(model => model.Color)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Color)
+                @Html.ValidationMessageFor(model => model.Color)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Size)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Size)
+                @Html.ValidationMessageFor(model => model.Size)
+            </div>*@
+            @*<div class="editor-label">
+                @Html.LabelFor(model => model.DivisionID, "Division")
+            </div>
+            <div class="editor-field">
+                @Html.DropDownList("DivisionID", String.Empty)
+                @Html.ValidationMessageFor(model => model.DivisionID)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.BranchID, "Branch")
+            </div>
+            <div class="editor-field">
+                @Html.DropDownList("BranchID", String.Empty)
+                @Html.ValidationMessageFor(model => model.BranchID)
+            </div>*@
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.AssetStatusID, "Asset Status")
+            </div>
+            <div class="editor-field">
+                @Html.DropDownList("AssetStatusID", String.Empty)
+                @Html.ValidationMessageFor(model => model.AssetStatusID)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.AssetTypeID, "Asset Type")
+            </div>
+            <div class="editor-field">
+                @Html.DropDownList("AssetTypeID", String.Empty)
+                @Html.ValidationMessageFor(model => model.AssetTypeID)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.WorkStationTypeID, "WorkStation Type")
+            </div>
+            <div class="editor-field">
+                @Html.DropDownList("WorkStationTypeID", String.Empty)
+                @Html.ValidationMessageFor(model => model.WorkStationTypeID)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.OSSystemID, "OS System")
+            </div>
+            <div class="editor-field">
+                @Html.DropDownList("OSSystemID", String.Empty)
+                @Html.ValidationMessageFor(model => model.OSSystemID)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Notes)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Notes)
+                @Html.ValidationMessageFor(model => model.Notes)
+            </div>
+                    </div>
+                </div>
+            </div>
+   
+            @*@if (@Model.AssetTypeID == 1)
+                { 
+                   <text><h3>Software Installed on this workstation:</h3>
+                    </text>
+                    foreach (var soft in @Model.Softwares)
+                    {
+                        <text>@soft.softwareName</text>
+                    }
+
+             }*@
+        
+            <input type="submit" value="Save" />
+    </fieldset>
+}
+
+<div>
+    <a href="/Asset/">Back to list</a>
+</div>
+
+@section Scripts {
+
+   @Scripts.Render("~/bundles/jqueryval")
+
+   <script type="text/javascript">
+       $(document).ready(function () {
+
+//            var assetType = @Html.Raw(Model.AssetTypeID);
+//            var id = @Html.Raw(Model.AssetID);
+//            
+//            //on page load
+//            if (assetType == 1) {
+//                $("#dynamicForm").html('');
+//                
+//                $("#dynamicForm").load("/asset/_workstation/" + id + " #contents", function(response, status, xhr) {
+//                    if (status == "error") {
+//                        var msg = "";
+//                        $("#dynamicForm").html(msg + xhr.status + " " + xhr.statusText);
+//                    }
+//                });
+//            }
+//            else if (assetType == 2) {
+//                $("#dynamicForm").html('');
+//                $("#dynamicForm").load('/asset/printer #contents');
+//            }
+//            else{
+//                $("#dynamicForm").html(null);
+//            }
+//            
+//            //on change event
+//            $("#AssetTypeID").change(function () {
+//               
+//            });
+
+        });
+   </script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+            var assetSoftwares = @Html.Raw(@ViewBag.ASSETSOFTWARES);
+            var ALLSOFTWARES = @Html.Raw(@ViewBag.ALLSOFTWARES);
+
+            var INSTALLTYPES = [{"id":1,"value":"Unassisted"},{"id":2,"value":"Remote Assistance"},{"id":3,"value":"Deskside Assistance"},{"id":4,"value":"Deskside with Hardware"}
+            ,{"id":5,"value":"Unknown"}];
+
+            var softwareLines = "";
+
+            //populate the softwares
+            $.each(assetSoftwares, function (key,value) {
+
+               softwareLines = softwareLines + '<div class="fields"><input type="hidden" name="assetSoftware.Index" value="' + value.id + '" /><div class="row-fluid no-space">';
+       
+               //software
+               softwareLines = softwareLines + ' <div class="span3"><select style="width:380px;" class="chzn-select" name="assetSoftware[' + value.id +'].softName"><option value=""></option>';
+               $.each(ALLSOFTWARES, function (key1,value1) {
+                    if(parseInt(value1.id) == parseInt(value.softwareid)){
+                        softwareLines = softwareLines + '<option selected="selected" value="' + value1.id + '">' + value1.value + '</option>';
+                    }
+                    else{
+                        softwareLines = softwareLines + '<option value="' + value1.id +'">' + value1.value + '</option>';
+                    }
+               });
+               softwareLines = softwareLines + '</select></div>';
+               
+               //install type
+               softwareLines = softwareLines + '<div class="span3"><select class="chzn-select" name="assetSoftware[' + value.id +'].installType"><option value=""></option>';
+               $.each(INSTALLTYPES, function (key2,value2) {
+                    if(parseInt(value2.id) == parseInt(value.installtype)){
+                        softwareLines = softwareLines + '<option selected="selected" value="' + value2.id + '">' + value2.value + '</option>';
+                    }
+                    else
+                    {
+                        softwareLines = softwareLines + '<option value="' + value2.id + '">' + value2.value + '</option>';
+                    }
+               });
+               softwareLines = softwareLines + '</select></div>';
+
+               //serial
+               softwareLines = softwareLines + '<div class="span3"><input type="text" name="assetSoftware['+ value.id +'].serial" value="'+ value.serial +'" /></div>';
+               softwareLines = softwareLines + '<div class="span3"><input type="text" name="assetSoftware['+ value.id +'].PO" value="'+ value.PO +'" /></div>';
+                                
+               softwareLines = softwareLines + '<div class="span3"><a class="remove" href="#">Remove Software</a></div></div></div>';
+            });
+            $("#assetSofwares").append(softwareLines);
+
+            var divisions = @Html.Raw(@ViewBag.all_divisions);
+            var branches = @Html.Raw(@ViewBag.all_branches);
+
+            var savedBranch = parseInt(@Html.Raw(@Model.BranchID));
+            var savedDivision = parseInt(@Html.Raw(@Model.DivisionID));
+
+            var getBranches = function (id) {
+
+                $("#branchid").find("option").remove();
+                $("#branchid").append("<option value=''>Please select a branch</option>");
+
+                $.each(branches, function (key,value) {
+                    if (id == value.division) {
+                        if (value.id == savedBranch) {
+                            $('#branchid').append($("<option></option>")
+                            .attr("selected", "selected")
+                            .attr("value", value.id)
+                            .text(value.value));
+                        }
+                        else {
+                            $('#branchid').append($("<option></option>")
+                            .attr("value", value.id)
+                            .text(value.value));
+                        }
+                    }
+                });
+            }
+
+            $("#divisionid").find("option").remove();
+            $("#divisionid").append("<option value=''>Please select a division</option>");
+
+            var id = 0;
+
+            $.each(divisions, function (key, value) {
+                if (value.id == savedDivision) {
+                    id = value.id;
+                    $('#divisionid').append($("<option></option>")
+                    .attr("selected", "selected")
+                    .attr("value", value.id)
+                    .text(value.value));
+                }
+                else {
+                    $('#divisionid').append($("<option></option>")
+                    .attr("value", value.id)
+                    .text(value.value));
+                }
+            });
+
+            getBranches(id);
+
+            $("#divisionid").change(function () {
+                var selectedValue = $(this).val();
+                getBranches(selectedValue);
+            });
+
+            var softwareOptions = '<option value=""></option>';
+
+            $.each(ALLSOFTWARES, function (k, v) {
+                softwareOptions = softwareOptions + '<option value="' + v.id + '">' + v.value + '</option>';
+            });
+            
+            var installOptions = '<option value="1">Unassisted</option> \
+                                    <option value="2">Remote Assistance</option> \
+                                    <option value="3">Deskside Assistance</option> \
+                                    <option value="4">Deskside with Hardware</option> \
+                                    <option value="5">Unkwon</option> ';
+
+            $(".load").append(softwareOptions);
+
+            //add element to elem div
+            $("#addElem").click(function () {
+
+                var new_id = new Date().getTime();
+                var content = '<div class="fields"> \
+                        <input type="hidden" name="assetSoftware.Index" value="' + new_id + '" /> \
+                        <div class="row-fluid"> \
+                            <div class="span3"> \
+                                <select style="width:380px;" class="chzn-select" id="assetSoftware[' + new_id + '].softName" name="assetSoftware[' + new_id + '].softName">' + softwareOptions + '</select> \
+                            </div> \
+                            <div class="span3"> \
+                                <select  class="chzn-select" id="assetSoftware[' + new_id + '].installType" name="assetSoftware[' + new_id + '].installType">' + installOptions + '</select> \
+                            </div> \
+                            <div class="span3"> \
+                                <input type="text" name="assetSoftware[' + new_id + '].PO" /> \
+                            </div> \
+                            <div class="span3"> \
+                               <input type="text" name="assetSoftware[' + new_id + '].serial" /> \
+                            </div> \
+                            <div class="span3"> \
+                                <a class="remove" href="#">Remove Software</a> \
+                            </div> \
+                        </div> \
+                    </div>';
+                $("#elem").append(content);
+            });
+
+            //remove fields
+            $("#elem").on("click", ".remove", function () {
+                $(this).closest("div.fields").remove();
+            });
+
+            //add chosen class
+            $("#EmployeeID").addClass("chzn-select");
+            $("#EmployeeID").trigger("liszt:updated");
+
+        });
+    </script>
+
+@*<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script type='text/javascript' src='http://code.jquery.com/jquery-1.8.3.js'></script>
+<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>*@
+
+<script type='text/javascript'>
+    //<![CDATA[
+//    $(window).load(function () {
+
+//        var db =  @Html.Raw(@ViewBag.DBSOFTWARES);
+//        
+//        var allVals = [];
+//        
+//        $.each(db, function (k, v) {
+//            $("#results").append("<label class=\"wList\"><input checked=\"checked\" class=\"wList-chk\" name=\"selectedSoftwares\" type=\"checkbox\" value=\""
+//            + v.id
+//            + "\"> "
+//            + v.value
+//            + "</label>");
+//            allVals.push(v.id);
+//        });
+
+//        $(function () {
+//            var sports = @Html.Raw(@ViewBag.ALLSOFTWARES);
+//            $("#sports").autocomplete({
+//                source: sports,
+//                autofocus: true,
+//                select: function (event, ui) {
+//                    if ($.inArray(ui.item.id, allVals) == -1) {
+//                        allVals.push(ui.item.id);
+//                        $("#results")
+//                        .append("<label class=\"wList\"><input checked=\"checked\" class=\"wList-chk\" name=\"selectedSoftwares\" type=\"checkbox\" value=\""
+//                        + ui.item.id
+//                        + "\"> "
+//                        + ui.item.value
+//                        + "</label>");
+//                        $('input.wList-chk[type="checkbox"][value="' + ui.item.id + '"]').parent().effect('highlight', {}, 1500);
+//                        ui.item.value = "";
+//                    }
+//                    else {
+//                        ui.item.value = "";
+//                        $('input.wList-chk[type="checkbox"][value="' + ui.item.id + '"]').parent().effect('highlight', {}, 1500);
+//                    }
+//                }
+//            });
+//        });
+
+//        $(document).on("change", ".wList-chk", function () {
+//            if ($(this).attr('checked')) {
+//                return;
+//            } else {
+//                var thisVal = $(this).val();
+//                var index = $.inArray(parseInt(thisVal), allVals);
+//                allVals.splice(index, 1);
+//                $(this).parent('.wList').remove();
+//            }
+//        });
+//    });//]]>
+</script>
+
+<script type="text/javascript">
+ $(function () {});
+</script>
+
+}

@@ -1,0 +1,54 @@
+﻿@model IEnumerable<SAAssetManagement.Models.Employee>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<div id="container">
+            <div id="demo">
+                <h2>Index</h2>
+                <table id="myDataTable" class="display table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Employee First Name</th>
+                            <th>Employee Last Name</th>
+                            <th>Employee User ID</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+
+@section scripts{
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#myDataTable').dataTable({
+                    "bServerSide": true,
+                    "bJQueryUI": true,
+                    "sPaginationType": "full_numbers",
+                    "sAjaxSource": "LoadEmployees",
+                    "bProcessing": true,
+                    "aoColumns": [
+                        { "sName": "EmployeeID",
+                            "bSearchable": false,
+                            "bSortable": false,
+                            "fnRender": function (oObj) {
+                                return '<a href=\"Edit/' +
+                                oObj.aData[0] + '\">Edit</a>';
+                            }
+                        },
+                        { "sName": "EmployeeFirstName" },
+                        { "sName": "EmployeeLastName" },
+                        { "sName": "UserID" }
+                    ]
+                });
+            });         
+        </script>
+}

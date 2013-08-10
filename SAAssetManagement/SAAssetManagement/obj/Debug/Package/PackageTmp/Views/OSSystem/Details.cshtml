@@ -1,0 +1,22 @@
+﻿@model SAAssetManagement.Models.OSSystem
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>OSSystem</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.OSSystemname)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.OSSystemname)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.OSSystemID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,29 @@
+﻿@model SAAssetManagement.Models.Branch
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Branch</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.BranchName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BranchName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Division.DivisionName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Division.DivisionName)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.BranchID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

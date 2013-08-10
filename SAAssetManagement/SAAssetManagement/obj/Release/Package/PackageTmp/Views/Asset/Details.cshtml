@@ -1,0 +1,216 @@
+﻿@model SAAssetManagement.Models.Asset
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend><strong>Asset:</strong> @Html.DisplayFor(model => model.AssetTag)</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.AssetTag)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AssetTag)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PONumber)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PONumber)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SerialNumber)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SerialNumber)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ReceivedDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ReceivedDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DeployedDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DeployedDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.StartWarrantyDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.StartWarrantyDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.EndWarrantyDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EndWarrantyDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.WarrantyTerm)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.WarrantyTerm)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PartNumnber)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PartNumnber)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Description)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Description)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MakeModel)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MakeModel)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Color)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Color)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Size)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Size)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CreatedOn)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CreatedOn)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.LastUpdatedOn)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LastUpdatedOn)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Division.DivisionName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Division.DivisionName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Branch.BranchName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Branch.BranchName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.AssetStatus.AssetStatusName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AssetStatus.AssetStatusName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Employee.EmployeeFirstName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Employee.EmployeeFirstName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.AssetType.AssetTypeName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AssetType.AssetTypeName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.WorkStationType.WorkStationTypeName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.WorkStationType.WorkStationTypeName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.OSSystem.OSSystemname)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.OSSystem.OSSystemname)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Building.BuildingName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Building.BuildingName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Floor)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Floor)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Address)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Address)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.City)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.City)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Notes)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Notes)
+    </div>
+</fieldset>
+
+@if (@Model.AssetTypeID == 1)
+{ 
+   <text><h3>Software Installed on this workstation:</h3>
+    </text>
+    foreach (var soft in @Model.Softwares)
+    {
+        <text>@soft.softwareName</text>
+    }
+
+}
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AssetID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

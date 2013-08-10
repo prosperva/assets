@@ -1,0 +1,64 @@
+﻿@model SAAssetManagement.Models.Software
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Software</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PONumber)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PONumber)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.softwareName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.softwareName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.InstallNumber)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.InstallNumber)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.LicenceNumber)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LicenceNumber)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NumberOfLicenses)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NumberOfLicenses)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Assisted)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Assisted)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SerialNumber)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SerialNumber)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.SoftwareID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

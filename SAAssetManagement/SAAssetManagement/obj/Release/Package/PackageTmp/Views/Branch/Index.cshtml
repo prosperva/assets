@@ -1,0 +1,51 @@
+﻿@model IEnumerable<SAAssetManagement.Models.Branch>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="display table table-striped table-bordered" id="branches">
+<thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BranchName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Division.DivisionName)
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+<tbody>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BranchName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Division.DivisionName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.BranchID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.BranchID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.BranchID })
+        </td>
+    </tr>
+}
+</tbody>
+</table>
+@section scripts{
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#branches').dataTable({
+            "bJQueryUI": true,
+            "sPaginationType": "full_numbers"
+        });
+    });
+</script>
+}

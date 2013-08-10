@@ -1,0 +1,45 @@
+﻿@model IEnumerable<SAAssetManagement.Models.WorkStationType>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-striped table-bordered" id="wtype">
+<thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.WorkStationTypeName)
+        </th>
+        <th></th>
+    </tr>
+</thead>
+<tbody>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.WorkStationTypeName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.WorkStationTypeID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.WorkStationTypeID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.WorkStationTypeID })
+        </td>
+    </tr>
+}
+</tbody>
+</table>
+@section scripts{
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#wtype').dataTable({
+            "bJQueryUI": true,
+            "sPaginationType": "full_numbers"
+        });
+    });
+</script>
+}

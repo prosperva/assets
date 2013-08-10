@@ -1,0 +1,139 @@
+﻿@*@model IEnumerable<SAAssetManagement.Models.Asset>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table id="assets" class="display table table-striped table-bordered">
+<thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AssetTag)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PONumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MakeModel)
+        </th>
+   
+        <th>
+           Division
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Branch.BranchName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AssetStatus.AssetStatusName)
+        </th>
+         <th>
+            @Html.DisplayNameFor(model => model.OSSystem.OSSystemname)
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+@foreach (var item in @Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AssetTag)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PONumber)
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.Division.DivisionName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Branch.BranchName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AssetStatus.AssetStatusName)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.OSSystem.OSSystemname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AssetType.AssetTypeName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.AssetID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.AssetID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.AssetID })
+        </td>
+    </tr>
+}
+</tbody>
+</table>*@
+@*@section scripts{
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#assets').dataTable({
+            "bJQueryUI": true,
+            "sPaginationType": "full_numbers"
+        });
+    });
+</script>
+}*@
+
+
+@{
+    ViewBag.Title = "Index";
+}
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+        <div id="container">
+            <div id="demo">
+                <h2>Index</h2>
+                <table id="myDataTable" class="display table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Asset Tag</th>
+                            <th>PO Number</th>
+                            <th>Make Model</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+
+@section scripts{
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#myDataTable').dataTable({
+                    "bServerSide": true,
+                    "bJQueryUI": true,
+                    "sPaginationType": "full_numbers",
+                    "sAjaxSource": "LoadAssets",
+                    "bProcessing": true,
+                    "aoColumns": [
+                        { "sName": "AssetID",
+                            "bSearchable": false,
+                            "bSortable": false,
+                            "fnRender": function (oObj) {
+                                return '<a href=\"Edit/' +
+                                oObj.aData[0] + '\">Edit</a>';
+                            }
+                        },
+                        { "sName": "AssetTag" },
+                        { "sName": "PONumber" },
+                        { "sName": "MakeModel" }
+                    ]
+                });
+            });         
+        </script>
+}
+
+
+

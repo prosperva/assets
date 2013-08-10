@@ -1,0 +1,473 @@
+﻿@model SAAssetManagement.Models.Asset
+
+@{
+    ViewBag.Title = "Create an asset";
+}
+
+<div class="row">
+    <div class="span8">
+        <h2>Create New Asset</h2>
+    </div>
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+
+        @Html.HiddenFor(model => model.AssetID)
+
+        <div class="tabbable">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#tab1" data-toggle="tab">Ownership Information</a></li>
+                <li><a href="#tab2" data-toggle="tab">Location Information</a></li>
+                <li><a href="#tab3" data-toggle="tab">Procurement Information</a></li>
+                <li><a href="#tab4" data-toggle="tab">Warranty Information</a></li>
+                <li><a href="#tab5" data-toggle="tab">Software Information</a></li>
+                <li><a href="#tab6" data-toggle="tab">History Information</a></li>
+                <li><a href="#tab7" data-toggle="tab">Other Information</a></li>
+            </ul>
+            <div class="tab-content">
+        <div class="tab-pane active" id="tab1">
+            
+            <div class="editor-label">
+                @Html.LabelFor(model => model.DivisionID)
+            </div>
+            <div class="editor-field">
+                <select id="divisionid" name="divisionid" class="chzn-select"></select>
+                @Html.ValidationMessageFor(model => model.DivisionID)
+            </div>
+      
+            <div class="editor-label">
+                @Html.LabelFor(model => model.BranchID)
+            </div>
+            <div class="editor-field">
+                <select id="branchid" name="branchid" class="chzn-select"></select>
+                @Html.ValidationMessageFor(model => model.BranchID)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.EmployeeID, "Employee")
+            </div>
+            <div class="editor-field">
+                <select id="employeeid" name="employeeid" class="chzn-select"></select>
+                @Html.ValidationMessageFor(model => model.EmployeeID)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.AssetTypeID, "Asset Type")
+            </div>
+            <div class="editor-field">
+                @Html.DropDownList("AssetTypeID", String.Empty)
+                @Html.ValidationMessageFor(model => model.AssetTypeID)
+            </div>
+      
+            <div class="editor-label">
+                @Html.LabelFor(model => model.AssetTag)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.AssetTag)
+                @Html.ValidationMessageFor(model => model.AssetTag)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.BarCode)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.BarCode)
+                @Html.ValidationMessageFor(model => model.BarCode)
+            </div>
+
+        </div>
+        
+       <div class="tab-pane" id="tab2">
+        <div class="editor-label">
+            @Html.LabelFor(model => model.BuildingID, "Building")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("BuildingID", String.Empty)
+            @Html.ValidationMessageFor(model => model.BuildingID)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Floor)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Floor)
+            @Html.ValidationMessageFor(model => model.Floor)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Address)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Address)
+            @Html.ValidationMessageFor(model => model.Address)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.City)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.City)
+            @Html.ValidationMessageFor(model => model.City)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ComputerLocation)
+        </div>
+        <div class="editor-field">
+            @Html.TextAreaFor(model => model.ComputerLocation, new { @cols = "50", @rows = "5" })
+            @Html.ValidationMessageFor(model => model.ComputerLocation)
+        </div>
+       </div>
+       
+       <div class="tab-pane" id="tab3">
+           <div class="editor-label">
+                @Html.LabelFor(model => model.PONumber)
+           </div>
+           <div class="editor-field">
+                @Html.EditorFor(model => model.PONumber)
+                @Html.ValidationMessageFor(model => model.PONumber)
+           </div>
+       </div>
+       
+       <div class="tab-pane" id="tab4">
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ReceivedDate)
+        </div>
+        @*<div class="editor-field">
+            @Html.EditorFor(model => model.ReceivedDate)
+            @Html.ValidationMessageFor(model => model.ReceivedDate)
+        </div>*@
+        <div id="ReceivedDate" name="ReceivedDate" class="input-append date">
+            <input data-format="dd/MM/yyyy hh:mm:ss" type="text"></input>
+            <span class="add-on">
+                <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+            </span>
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DeployedDate)
+        </div>
+        @*<div class="editor-field">
+            @Html.EditorFor(model => model.DeployedDate)
+            @Html.ValidationMessageFor(model => model.DeployedDate)
+        </div>*@
+
+        <div id="DeployedDate" name="DeployedDate" class="input-append date">
+            <input data-format="dd/MM/yyyy hh:mm:ss" type="text"></input>
+            <span class="add-on">
+                <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+            </span>
+        </div>
+
+        </div>
+                
+       <div class="tab-pane" id="tab5">
+                    @*<h5>Software Installed on this workstation:</h5>
+                    <hr />
+
+                    <div class="editor-field">
+                        <div id="results"></div>
+                    </div>
+                    <br />
+
+                    <div class="editor-label">
+                        <label>Enter a name of a software:</label> <input type="text" name="sports" id="sports" />
+                    </div>*@
+
+                   <div id="elem">
+                    <!-- If there are software installed, then show them -->
+                    <div class="row-fluid no-space">
+                        <div class="span3">Software Name</div>
+                        <div class="span3">Install Type</div>
+                        <div class="span3">PO Number</div>
+                        <div class="span3">License Key</div>
+                        <div class="span3"></div>
+                    </div>
+
+                    @*@foreach (var item in @Model.SoftwarePerAssets)
+                    {
+                        <div class="fields">
+                            <input type="hidden" name="assetSoftware.Index" value="@item.ID" />
+                            <div class="row-fluid">
+                                <div class="span3">
+                                    <select name="assetSoftware[@item.ID].softName" class="load"></select>
+                                </div>
+                                <div class="span3">
+                                    <select name="assetSoftware[@item.ID].installType" class="installType">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                                </div>
+                                <div class="span3">
+                                    <input type="text" name="assetSoftware[@item.ID].serial" value="@item.SerialKey" />
+                                </div>
+                                <div class="span3">
+                                    <a class="remove" href="#">Remove Software</a>
+                                </div>
+                            </div>
+                        </div>
+                    }*@
+
+
+                    <div id="assetSofwares"></div>
+
+                </div>
+                <a href="#" id="addElem">Add Software</a>
+
+                </div>
+
+       <div class="tab-pane" id="tab6">
+            <div class="editor-label">
+                @Html.LabelFor(model => model.CreatedOn)
+            </div>
+            @*<div class="editor-field">
+                @Html.EditorFor(model => model.CreatedOn)
+                @Html.ValidationMessageFor(model => model.CreatedOn)
+            </div>*@
+           <div id="CreatedOn" name="CreatedOn" class="input-append date">
+                <input data-format="dd/MM/yyyy hh:mm:ss" type="text"></input>
+                <span class="add-on">
+                    <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+                </span>
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.LastUpdatedOn)
+            </div>
+            @*<div class="editor-field">
+                @Html.EditorFor(model => model.LastUpdatedOn)
+                @Html.ValidationMessageFor(model => model.LastUpdatedOn)
+            </div>*@
+            <div id="LastUpdatedOn" name="LastUpdatedOn" class="input-append date">
+                <input data-format="dd/MM/yyyy hh:mm:ss" type="text"></input>
+                <span class="add-on">
+                    <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+                </span>
+            </div>
+        </div>
+
+       <div class="tab-pane" id="tab7">
+            <div class="editor-label">
+                @Html.LabelFor(model => model.SerialNumber)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.SerialNumber)
+                @Html.ValidationMessageFor(model => model.SerialNumber)
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Manufacturer)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Manufacturer)
+                @Html.ValidationMessageFor(model => model.Manufacturer)
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.PartNumber)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.PartNumber)
+                @Html.ValidationMessageFor(model => model.PartNumber)
+            </div>
+            @*<div class="editor-label">
+                @Html.LabelFor(model => model.Description)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Description)
+                @Html.ValidationMessageFor(model => model.Description)
+            </div>*@
+            <div class="editor-label">
+                @Html.LabelFor(model => model.MakeModel)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.MakeModel)
+                @Html.ValidationMessageFor(model => model.MakeModel)
+            </div>
+            @*<div class="editor-label">
+                @Html.LabelFor(model => model.Color)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Color)
+                @Html.ValidationMessageFor(model => model.Color)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Size)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Size)
+                @Html.ValidationMessageFor(model => model.Size)
+            </div>*@
+            @*<div class="editor-label">
+                @Html.LabelFor(model => model.DivisionID, "Division")
+            </div>
+            <div class="editor-field">
+                @Html.DropDownList("DivisionID", String.Empty)
+                @Html.ValidationMessageFor(model => model.DivisionID)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.BranchID, "Branch")
+            </div>
+            <div class="editor-field">
+                @Html.DropDownList("BranchID", String.Empty)
+                @Html.ValidationMessageFor(model => model.BranchID)
+            </div>*@
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.AssetStatusID, "Asset Status")
+            </div>
+            <div class="editor-field">
+                @Html.DropDownList("AssetStatusID", String.Empty)
+                @Html.ValidationMessageFor(model => model.AssetStatusID)
+            </div>
+
+            @*<div class="editor-label">
+                @Html.LabelFor(model => model.AssetTypeID, "Asset Type")
+            </div>
+            <div class="editor-field">
+                @Html.DropDownList("AssetTypeID", String.Empty)
+                @Html.ValidationMessageFor(model => model.AssetTypeID)
+            </div>*@
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.WorkStationTypeID, "WorkStation Type")
+            </div>
+            <div class="editor-field">
+                @Html.DropDownList("WorkStationTypeID", String.Empty)
+                @Html.ValidationMessageFor(model => model.WorkStationTypeID)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.OSSystemID, "OS System")
+            </div>
+            <div class="editor-field">
+                @Html.DropDownList("OSSystemID", String.Empty)
+                @Html.ValidationMessageFor(model => model.OSSystemID)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Notes)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Notes)
+                @Html.ValidationMessageFor(model => model.Notes)
+            </div>
+                    </div>
+                </div>
+            </div>
+
+            <input type="submit" value="Save" />
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+   <script type="text/javascript">
+
+    $(document).ready(function () {
+        
+        //Date picker
+        $('#ReceivedDate,#DeployedDate,#CreatedOn,#LastUpdatedOn').datetimepicker({});
+
+        //DROP DOWNS
+        var divisions = @Html.Raw(@ViewBag.all_divisions);
+        var branches = @Html.Raw(@ViewBag.all_branches);
+        var employees = @Html.Raw(@ViewBag.all_employees);
+
+        $("#divisionid").append("<option value=''>Please select a division</option>");
+        $.each(divisions, function (key, value) {
+            $('#divisionid').append($("<option></option>")
+                            .attr("value", value.id)
+                            .text(value.value));
+        });
+        $("#divisionid").trigger("liszt:updated");
+
+        $("#divisionid").change(function () {
+            $("#branchid").find("option").remove();
+            $("#branchid").append("<option value=''>Please select a branch</option>");
+            var id = $(this).val();
+            $.each(branches, function (key,value) {
+                if(value.division == id){
+                    $('#branchid').append($("<option></option>")
+                            .attr("value", value.id)
+                            .text(value.value));
+                }
+            });
+            $("#branchid").trigger("liszt:updated");
+        });
+        
+
+        //TO DO: MAKE EMPLOYEES RESPOND TO DIVISION AND BRANCH
+
+
+        $("#employeeid").append("<option value=''>Please select an employee</option>");
+        $.each(employees, function (key, value) {
+            $('#employeeid').append($("<option></option>")
+                            .attr("value", value.id)
+                            .text(value.value));
+        });
+        $("#employeeid").trigger("liszt:updated");
+
+        //SOFTWARE
+        var ALLSOFTWARES = @Html.Raw(@ViewBag.ALLSOFTWARES);
+        var INSTALLTYPES = [{"id":1,"value":"Unassisted"},{"id":2,"value":"Remote Assistance"},{"id":3,"value":"Deskside Assistance"},{"id":4,"value":"Deskside with Hardware"}
+            ,{"id":5,"value":"Unknown"}];
+
+        var softwareOptions = '<option value=""></option>';
+
+            $.each(ALLSOFTWARES, function (k, v) {
+                softwareOptions = softwareOptions + '<option value="' + v.id + '">' + v.value + '</option>';
+            });
+            
+            var installOptions = '<option value="1">Unassisted</option> \
+                                    <option value="2">Remote Assistance</option> \
+                                    <option value="3">Deskside Assistance</option> \
+                                    <option value="4">Deskside with Hardware</option> \
+                                    <option value="5">Unkwon</option> ';
+
+            $(".load").append(softwareOptions);
+
+            //add element to elem div
+            $("#addElem").click(function () {
+
+                var new_id = new Date().getTime();
+                var content = '<div class="fields"> \
+                        <input type="hidden" name="assetSoftware.Index" value="' + new_id + '" /> \
+                        <div class="row-fluid"> \
+                            <div class="span3"> \
+                                <select style="width:380px;" class="chzn-select" id="assetSoftware[' + new_id + '].softName" name="assetSoftware[' + new_id + '].softName">' + softwareOptions + '</select> \
+                            </div> \
+                            <div class="span3"> \
+                                <select  class="chzn-select" id="assetSoftware[' + new_id + '].installType" name="assetSoftware[' + new_id + '].installType">' + installOptions + '</select> \
+                            </div> \
+                            <div class="span3"> \
+                                <input type="text" name="assetSoftware[' + new_id + '].PO" /> \
+                            </div> \
+                            <div class="span3"> \
+                               <input type="text" name="assetSoftware[' + new_id + '].serial" /> \
+                            </div> \
+                            <div class="span3"> \
+                                <a class="remove" href="#">Remove Software</a> \
+                            </div> \
+                        </div> \
+                    </div>';
+                $("#elem").append(content);
+            });
+
+            //remove fields
+            $("#elem").on("click", ".remove", function () {
+                $(this).closest("div.fields").remove();
+            });
+    });
+
+    </script>
+}

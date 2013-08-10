@@ -1,0 +1,45 @@
+﻿@model IEnumerable<SAAssetManagement.Models.OSSystem>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class=" table table-striped table-bordered" id="os">
+<thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.OSSystemname)
+        </th>
+        <th></th>
+    </tr>
+</thead>
+<tbody>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.OSSystemname)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.OSSystemID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.OSSystemID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.OSSystemID })
+        </td>
+    </tr>
+}
+</tbody>
+</table>
+@section scripts{
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#os').dataTable({
+            "bJQueryUI": true,
+            "sPaginationType": "full_numbers"
+        });
+    });
+</script>
+}

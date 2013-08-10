@@ -1,0 +1,124 @@
+﻿@model SAAssetManagement.Models.Employee
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details for: @Html.DisplayFor(model => model.EmployeeFirstName) @Html.DisplayFor(model => model.EmployeeLastName)</h2>
+
+@if(@Model.Assets.Count > 0){
+<text>
+    <table class="table table-striped table-bordered">
+        <tr>
+            <th>Asset Tag</th>
+            <th>Asset Type</th>
+            <th>Workstation Type</th>
+        </tr>
+        @foreach (var item in @Model.Assets)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.AssetTag)</td>
+                <td>@Html.DisplayFor(modelItem => item.AssetType.AssetTypeName)</td>
+                <td>@Html.DisplayFor(modelItem => item.WorkStationType.WorkStationTypeName)</td>
+            </tr>
+        }
+</table>
+</text>
+}
+else{
+    <text>
+        <div class="alert alert-info">This user has no assets</div>
+    </text>
+}
+
+@*<fieldset>
+    <legend>Employee</legend>
+
+    <div class="display-label">
+         Name: @Html.DisplayFor(model => model.EmployeeFirstName) @Html.DisplayFor(model => model.EmployeeLastName)
+    </div>
+
+    
+
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EmployeeFirstName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.EmployeeLastName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EmployeeLastName)
+    </div>
+
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EmployeeManager.EmployeeFirstName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Address)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Address)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Building.BuildingName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Building.BuildingName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.City)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.City)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Phone)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Phone)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Floor)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Floor)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.LastUpdatedOn)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LastUpdatedOn)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CreatedOn)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CreatedOn)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.UserID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UserID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.EmployeeTitle)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EmployeeTitle)
+    </div>
+</fieldset>*@
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.EmployeeID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

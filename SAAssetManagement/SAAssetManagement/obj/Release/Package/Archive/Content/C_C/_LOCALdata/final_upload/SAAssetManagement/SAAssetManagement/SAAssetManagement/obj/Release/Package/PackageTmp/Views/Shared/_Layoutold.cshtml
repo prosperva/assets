@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title - Asset Management System</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <link rel="stylesheet" type="text/css" href="/Content/jquery-ui-1.7.2.custom.css" />
+        <link rel="stylesheet" type="text/css" href="/Content/demo_table_jui.css" />
+        <style>
+            
+         th{text-align:left;}
+         
+         
+         
+    </style>
+        
+        <meta name="viewport" content="width=device-width" />
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+    </head>
+    <body>
+        @*<header>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p class="site-title">@Html.ActionLink("your logo here", "Index", "Home")</p>
+                </div>
+                <div class="float-right">
+                    <section id="login">
+                        @Html.Partial("_LoginPartial")
+                    </section>
+                    <nav>
+                        <ul id="menu">
+                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li>@Html.ActionLink("About", "About", "Home")</li>
+                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>*@
+        <div id="body">
+            @RenderSection("featured", required: false)
+            <section class="content-wrapper main-content clear-fix">
+                @RenderBody()
+            </section>
+        </div>
+        <footer>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p>&copy; @DateTime.Now.Year - Service Alberta Asset Management System</p>
+                </div>
+            </div>
+        </footer>
+
+        <script type="text/javascript" src="/Scripts/jquery-latest.min.js"></script>
+        <script type="text/javascript" src="/Scripts/jquery.dataTables.nightly.js"></script>
+        <script type="text/javascript" src="/Scripts/jquery-ui-1.10.1.custom.min.js"></script>
+
+        @*@Scripts.Render("~/bundles/jquery")*@
+
+        @RenderSection("scripts", required: false)
+        
+    </body>
+</html>

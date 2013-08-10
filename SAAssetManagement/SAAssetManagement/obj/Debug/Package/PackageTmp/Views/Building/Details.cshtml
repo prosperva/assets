@@ -1,0 +1,22 @@
+﻿@model SAAssetManagement.Models.Building
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Building</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.BuildingName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BuildingName)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.BuildingID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

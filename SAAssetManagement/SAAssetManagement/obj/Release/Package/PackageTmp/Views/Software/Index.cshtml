@@ -1,0 +1,88 @@
+﻿@model IEnumerable<SAAssetManagement.Models.Software>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="display table table-striped table-bordered" id="softwarelist" border="1">
+    <thead>
+    <tr>
+        @*<th>
+            @Html.DisplayNameFor(model => model.PONumber)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.softwareName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InstallNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LicenceNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OSSystem.OSSystemname)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.NumberOfLicenses)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Assisted)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SerialNumber)
+        </th>*@
+        <th></th>
+    </tr>
+</thead>
+<tbody>
+@foreach (var item in Model) {
+    <tr>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.PONumber)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.softwareName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InstallNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LicenceNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OSSystem.OSSystemname)
+        </td>
+       @* <td>
+            @Html.DisplayFor(modelItem => item.NumberOfLicenses)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Assisted)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SerialNumber)
+        </td>*@
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.SoftwareID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.SoftwareID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.SoftwareID })
+        </td>
+    </tr>
+}
+</tbody>
+</table>
+
+@section scripts{
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#softwarelist').dataTable({
+            "bJQueryUI": true,
+            "sPaginationType": "full_numbers"
+        });
+    });
+</script>
+}

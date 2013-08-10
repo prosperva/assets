@@ -1,0 +1,73 @@
+﻿@model SAAssetManagement.Models.Employee
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@Html.Partial("_employee_fields", Model)
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var divisions = @Html.Raw(@ViewBag.all_divisions);
+            var branches = @Html.Raw(@ViewBag.all_branches);
+
+            var savedBranch = @Html.Raw(@Model.BranchID)|0;
+            var savedDivision = @Html.Raw(@Model.DivisionID)|0;
+
+            var getBranches = function (id) {
+
+                $("#branchid").find("option").remove();
+                $("#branchid").append("<option value=''>Please select a branch</option>");
+
+                $.each(branches, function (key,value) {
+                    if (id == value.division) {
+                        if (value.id == savedBranch) {
+                            $('#branchid').append($("<option></option>")
+                            .attr("selected", "selected")
+                            .attr("value", value.id)
+                            .text(value.value));
+                        }
+                        else {
+                            $('#branchid').append($("<option></option>")
+                            .attr("value", value.id)
+                            .text(value.value));
+                        }
+                    }
+                });
+            }
+
+            $("#divisionid").find("option").remove();
+            $("#divisionid").append("<option value=''>Please select a division</option>");
+
+            var id = 0;
+
+            $.each(divisions, function (key, value) {
+                if (value.id == savedDivision) {
+                    id = value.id;
+                    $('#divisionid').append($("<option></option>")
+                    .attr("selected", "selected")
+                    .attr("value", value.id)
+                    .text(value.value));
+                }
+                else {
+                    $('#divisionid').append($("<option></option>")
+                    .attr("value", value.id)
+                    .text(value.value));
+                }
+            });
+
+            getBranches(id);
+
+            $("#divisionid").change(function () {
+                var selectedValue = $(this).val();
+                getBranches(selectedValue);
+            });
+        });
+    </script>
+}

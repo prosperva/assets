@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="AssetContext-Web.config Connection String" description="AssetContext Connection String used in web.config by the application to access the database." defaultvalue="Server=edm-goa-sqlc-ub\edmgoasqlcub,1179;Database=SACIO_ITAssets;User Id=SACIO_ITAssets_admin;Password=H4%go22z;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\_LOCALdata\\final_upload\\SAAssetManagement\\SAAssetManagement\\SAAssetManagement\\obj\\Debug\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='AssetContext']/@connectionString" />
+  </parameter>
+</parameters>

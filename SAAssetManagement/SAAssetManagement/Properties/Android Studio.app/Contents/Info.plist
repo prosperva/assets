@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>CFBundleDevelopmentRegion</key>
+    <string>English</string>
+    <key>CFBundleDocumentTypes</key>
+    <array>
+      
+      <dict>
+        <key>CFBundleTypeExtensions</key>
+        <array>
+          <string>ipr</string>
+        </array>
+        <key>CFBundleTypeIconFile</key>
+        <string>idea.icns</string>
+        <key>CFBundleTypeName</key>
+        <string>IntelliJ IDEA Project File</string>
+        <key>CFBundleTypeRole</key>
+        <string>Editor</string>
+      </dict>
+
+      <dict>
+        <key>CFBundleTypeExtensions</key>
+        <array>
+          <string>*</string>
+        </array>
+        <key>CFBundleTypeName</key>
+        <string>All documents</string>
+        <key>CFBundleTypeOSTypes</key>
+        <array>
+          <string>****</string>
+        </array>
+        <key>CFBundleTypeRole</key>
+        <string>Editor</string>
+        <key>LSTypeIsPackage</key>
+        <false/>
+      </dict>
+    </array>
+    <key>CFBundleExecutable</key>
+    <string>studio</string>
+    <key>CFBundleIconFile</key>
+    <string>AndroidStudio.icns</string>
+    <key>CFBundleInfoDictionaryVersion</key>
+    <string>6.0</string>
+    <key>CFBundleName</key>
+    <string>Android Studio</string>
+    <key>CFBundlePackageType</key>
+    <string>APPL</string>
+    <key>CFBundleIdentifier</key>
+    <string>com.google.android.studio</string>
+    <key>CFBundleSignature</key>
+    <string>????</string>
+    <key>CFBundleGetInfoString</key>
+    <string>Android Studio EAP AI-130.677228, build AI-130.677228. Copyright Google Inc., (c) 2013-2013</string>
+    <key>CFBundleShortVersionString</key>
+    <string>EAP AI-130.677228</string>
+    <key>CFBundleVersion</key>
+    <string>AI-130.677228</string>
+    <key>LSApplicationCategoryType</key>
+    <string>public.app-category.developer-tools</string>
+    <key>CFBundleHelpBookName</key>
+    <string>JetBrains.AI.help</string>
+    <key>CFBundleHelpBookFolder</key>
+    <string>AI.help</string>
+
+    <key>NSHighResolutionCapable</key>
+    <true/>
+
+    <key>LSArchitecturePriority</key>
+    <array>
+      <string>x86_64</string>
+      <string>i386</string>
+    </array>
+    <key>LSRequiresNativeExecution</key>
+    <string>YES</string>
+    
+    <key>Java</key>
+    <dict>
+      <key>ClassPath</key>
+      <string>$APP_PACKAGE/lib/bootstrap.jar:$APP_PACKAGE/lib/extensions.jar:$APP_PACKAGE/lib/util.jar:$APP_PACKAGE/lib/jdom.jar:$APP_PACKAGE/lib/log4j.jar:$APP_PACKAGE/lib/trove4j.jar:$APP_PACKAGE/lib/jna.jar</string>
+
+      <key>JVMVersion</key>
+      <string>1.6*</string>
+
+      <key>MainClass</key>
+      <string>com.intellij.idea.Main</string>
+      <key>Properties</key>
+      <dict>
+        
+        <key>idea.platform.prefix</key>
+        <string>AndroidStudio</string>
+
+        <key>idea.paths.selector</key>
+        <string>AndroidStudioPreview</string>
+
+      </dict>
+
+      <key>VMOptions</key>
+      <string>-ea -Dsun.io.useCanonCaches=false -XX:+HeapDumpOnOutOfMemoryError -Xverify:none -Xbootclasspath/a:../lib/boot.jar</string>
+
+      <key>WorkingDirectory</key>
+      <string>$APP_PACKAGE/bin</string>
+    </dict>
+  </dict>
+</plist>

@@ -1,0 +1,216 @@
+﻿@model SAAssetManagement.Models.Asset
+
+<div id="contents">
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.WorkStationTypeID, "WorkStationType")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("WorkStationTypeID", String.Empty)
+            @Html.ValidationMessageFor(model => model.WorkStationTypeID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AssetTag)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.AssetTag)
+            @Html.ValidationMessageFor(model => model.AssetTag)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PONumber)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PONumber)
+            @Html.ValidationMessageFor(model => model.PONumber)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SerialNumber)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SerialNumber)
+            @Html.ValidationMessageFor(model => model.SerialNumber)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ReceivedDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ReceivedDate)
+            @Html.ValidationMessageFor(model => model.ReceivedDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DeployedDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DeployedDate)
+            @Html.ValidationMessageFor(model => model.DeployedDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.StartWarrantyDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.StartWarrantyDate)
+            @Html.ValidationMessageFor(model => model.StartWarrantyDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EndWarrantyDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.EndWarrantyDate)
+            @Html.ValidationMessageFor(model => model.EndWarrantyDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.WarrantyTerm)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.WarrantyTerm)
+            @Html.ValidationMessageFor(model => model.WarrantyTerm)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PartNumnber)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PartNumnber)
+            @Html.ValidationMessageFor(model => model.PartNumnber)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Description)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Description)
+            @Html.ValidationMessageFor(model => model.Description)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MakeModel)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MakeModel)
+            @Html.ValidationMessageFor(model => model.MakeModel)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Color)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Color)
+            @Html.ValidationMessageFor(model => model.Color)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Size)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Size)
+            @Html.ValidationMessageFor(model => model.Size)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CreatedOn)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CreatedOn)
+            @Html.ValidationMessageFor(model => model.CreatedOn)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.LastUpdatedOn)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.LastUpdatedOn)
+            @Html.ValidationMessageFor(model => model.LastUpdatedOn)
+        </div>
+
+        @*<div class="editor-label">
+            @Html.LabelFor(model => model.DivisionID, "Division")
+        </div>
+        <div class="editor-field">
+            <select id="divisionid" name="divisionid"></select>
+            @Html.ValidationMessageFor(model => model.DivisionID)
+        </div>
+        <div id="division"></div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.BranchID, "Branch")
+        </div>
+        <div class="editor-field">
+            <select id="branchid" name="branchid"></select>
+            @Html.ValidationMessageFor(model => model.BranchID)
+        </div>*@
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AssetStatusID, "AssetStatus")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("AssetStatusID", String.Empty)
+            @Html.ValidationMessageFor(model => model.AssetStatusID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EmployeeID, "Employee")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("EmployeeID", String.Empty)
+            @Html.ValidationMessageFor(model => model.EmployeeID)
+        </div>
+
+       
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.OSSystemID, "OSSystem")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("OSSystemID", String.Empty)
+            @Html.ValidationMessageFor(model => model.OSSystemID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.BuildingID, "Building")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("BuildingID", String.Empty)
+            @Html.ValidationMessageFor(model => model.BuildingID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Floor)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Floor)
+            @Html.ValidationMessageFor(model => model.Floor)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Address)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Address)
+            @Html.ValidationMessageFor(model => model.Address)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.City)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.City)
+            @Html.ValidationMessageFor(model => model.City)
+        </div>
+
+        @*<div class="editor-label">
+            @Html.LabelFor(model => model.Notes)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Notes)
+            @Html.ValidationMessageFor(model => model.Notes)
+        </div>*@
+        <input type="hidden" name="Notes" value="" />
+</div>

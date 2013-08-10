@@ -1,0 +1,22 @@
+﻿@model SAAssetManagement.Models.WorkStationType
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>WorkStationType</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.WorkStationTypeName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.WorkStationTypeName)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.WorkStationTypeID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

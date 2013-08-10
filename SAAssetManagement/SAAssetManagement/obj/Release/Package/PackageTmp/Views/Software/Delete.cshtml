@@ -1,0 +1,67 @@
+﻿@model SAAssetManagement.Models.Software
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Software</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PONumber)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PONumber)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.softwareName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.softwareName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.InstallNumber)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.InstallNumber)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.LicenceNumber)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LicenceNumber)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NumberOfLicenses)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NumberOfLicenses)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Assisted)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Assisted)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SerialNumber)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SerialNumber)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

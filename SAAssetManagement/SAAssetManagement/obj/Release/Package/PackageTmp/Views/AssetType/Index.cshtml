@@ -1,0 +1,64 @@
+﻿@model IEnumerable<SAAssetManagement.Models.AssetType>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table id="assettypelist" class="display table table-striped table-bordered" border="1">
+<thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AssetTypeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WarantyTerm)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedOn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastUpdatedOn)
+        </th>
+        <th></th>
+    </tr>
+</thead>
+<tbody>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AssetTypeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WarantyTerm)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedOn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastUpdatedOn)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.AssetTypeID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.AssetTypeID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.AssetTypeID })
+        </td>
+    </tr>
+}
+</tbody>
+</table>
+
+@section scripts{
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#assettypelist').dataTable({
+            "bJQueryUI": true,
+            "sPaginationType": "full_numbers"
+        });
+    });
+</script>
+}

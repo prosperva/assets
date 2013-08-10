@@ -1,0 +1,183 @@
+﻿@model SAAssetManagement.Models.Employee
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Employee</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EmployeeFirstName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.EmployeeFirstName)
+            @Html.ValidationMessageFor(model => model.EmployeeFirstName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EmployeeLastName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.EmployeeLastName)
+            @Html.ValidationMessageFor(model => model.EmployeeLastName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Manager)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("manager",String.Empty)
+            @Html.ValidationMessageFor(model => model.Manager)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DivisionID)
+        </div>
+        <div class="editor-field">
+            <select id="divisionid" name="divisionid"></select>
+            @Html.ValidationMessageFor(model => model.DivisionID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.BranchID)
+        </div>
+        <div class="editor-field">
+            <select id="branchid" name="branchid"></select>
+            @Html.ValidationMessageFor(model => model.BranchID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Address)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Address)
+            @Html.ValidationMessageFor(model => model.Address)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Building.BuildingName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Building.BuildingName)
+            @Html.ValidationMessageFor(model => model.Building.BuildingName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.City)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.City)
+            @Html.ValidationMessageFor(model => model.City)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Phone)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Phone)
+            @Html.ValidationMessageFor(model => model.Phone)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Floor)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Floor)
+            @Html.ValidationMessageFor(model => model.Floor)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UserID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UserID)
+            @Html.ValidationMessageFor(model => model.UserID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EmployeeTitle)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.EmployeeTitle)
+            @Html.ValidationMessageFor(model => model.EmployeeTitle)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var divisions = @Html.Raw(@ViewBag.all_divisions);
+            var branches = @Html.Raw(@ViewBag.all_branches);
+
+            var savedBranch = 0;
+            var savedDivision = 0;
+
+            var getBranches = function (id) {
+
+                $("#branchid").find("option").remove();
+                $("#branchid").append("<option value=''>Please select a branch</option>");
+
+                $.each(branches, function (key,value) {
+                    if (id == value.division) {
+                        if (value.id == savedBranch) {
+                            $('#branchid').append($("<option></option>")
+                            .attr("selected", "selected")
+                            .attr("value", value.id)
+                            .text(value.value));
+                        }
+                        else {
+                            $('#branchid').append($("<option></option>")
+                            .attr("value", value.id)
+                            .text(value.value));
+                        }
+                    }
+                });
+            }
+
+            $("#divisionid").find("option").remove();
+            $("#divisionid").append("<option value=''>Please select a division</option>");
+
+            var id = 0;
+
+            $.each(divisions, function (key, value) {
+                if (value.id == savedDivision) {
+                    id = value.id;
+                    $('#divisionid').append($("<option></option>")
+                    .attr("selected", "selected")
+                    .attr("value", value.id)
+                    .text(value.value));
+                }
+                else {
+                    $('#divisionid').append($("<option></option>")
+                    .attr("value", value.id)
+                    .text(value.value));
+                }
+            });
+
+            getBranches(id);
+
+            $("#divisionid").change(function () {
+                var selectedValue = $(this).val();
+                getBranches(selectedValue);
+            });
+        });
+    </script>
+}
